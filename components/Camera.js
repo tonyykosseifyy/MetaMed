@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View , TouchableOpacity } from 'react-native'
+import { View , TouchableOpacity , StyleSheet} from 'react-native'
+import AppText from './AppText'
 import { Camera } from 'expo-camera'
-import CameraPhoto from "./CameraPhoto";
+import CameraPhoto from "./CameraPhoto"
 
 let camera = Camera 
 
@@ -14,51 +15,60 @@ const CameraComponent = () => {
         setPreviewVisible(true)
         setCapturedImage(photo)
     }
-    if (capturedImage) {
-        return (
-            <CameraPhoto photo={capturedImage} />
-        )
-    } 
-    else {
-        return (
-          <Camera
-            style={{flex: 1,width:"100%"}}
-            ref={(r) => {
-              camera = r
-            }}
+
+  
+      return (
+        <Camera
+          ref={(r) => {
+            camera = r
+          }}
+          style={styles.camera}
+        >
+          <View
+            style={
+              styles.camera_container
+            }
           >
-            <View
-              style={{
-              position: 'absolute',
-              bottom: 0,
-              flexDirection: 'row',
-              flex: 1,
-              width: '100%',
-              padding: 20,
-              justifyContent: 'space-between'
-              }}
-            >
-            <View
-              style={{
-              alignSelf: 'center',
-              flex: 1,
-              alignItems: 'center'
-            }}
-            >
-            <TouchableOpacity
-              onPress={__takePicture}
-              style={{
-              width: 70,
-              height: 70,
-              bottom: 0,
-              borderRadius: 50,
-              backgroundColor: '#fff'
-              }}
-            />
-          </View>
+          <View
+            style={styles.button_container}
+          >
+          <TouchableOpacity
+            onPress={__takePicture}
+            style={styles.button}
+          />
         </View>
-    </Camera> )
-    }
+      </View>
+  </Camera> )
+  
 } ;
+
+const styles = StyleSheet.create({
+  camera:{
+    flex:1,
+    width: '100%',
+
+  },
+  camera_container: {
+    position: 'absolute',
+    bottom: 0,
+    flexDirection: 'row',
+    flex: 1,
+    width: '100%',
+    padding: 20,
+    justifyContent: 'space-between'
+  },
+  button_container: {
+    alignSelf: 'center',
+    flex: 1,
+    alignItems: 'center'
+  },
+  button: { 
+    width: 70,
+    height: 70,
+    bottom: 0,
+    borderRadius: 50,
+    backgroundColor: 'blue',
+  }
+})
 
 export default CameraComponent ;

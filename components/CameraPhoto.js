@@ -6,8 +6,11 @@ const CameraPhoto = ({photo}) => {
     console.log('Photo: ', photo)
     const [ result , setResult ] = useState();
     useEffect(() => {
-        const resultFromUri = async () => await MlkitOcr.detectFromUri(uri);
-        setResult(resultFromUri())
+        const fetch = async () => {
+          const response = await MlkitOcr.detectFromUri(photo.uri)
+          setResult(response)
+        }
+        fetch()
     },[])
     console.log(result)
     return (

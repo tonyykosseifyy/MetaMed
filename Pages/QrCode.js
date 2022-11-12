@@ -1,60 +1,89 @@
-import React, {useState} from 'react'
-import AppText from '../components/AppText'
+import axios from 'axios'; 
+import {useState} from 'react'
 import Background from '../components/Background'
-import { StyleSheet, Dimensions,  View, TouchableOpacity ,Text} from 'react-native'
-import { Camera } from 'expo-camera'
-import CameraComponent from "../components/Camera"
-let ScreenHeight = Dimensions.get("window").height;
+import { StyleSheet, Dimensions, Button, Image, View} from 'react-native'
+import * as ImagePicker from 'expo-image-picker';
+import AppText from '../components/AppText';
 
+const API_KEY = 'AIzaSyD2tR4AqjSrgyP8JCVJvMBTzRF35n_M0EU';
+const API_URL = `https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}`;
 
-const QrCode = () => {
-  const [startCamera,setStartCamera] = React.useState(false)
-  const startCameraFunc = async () => {
-    const {status} = await Camera.requestCameraPermissionsAsync()
-    if(status === 'granted'){
-      setStartCamera(true) 
-    } else{
-      Alert.alert("Access denied")
-    }}
+async function callGoogleVisionAsync(image) {
+  const body = {
+    requests: [
+      {
+        image: {
+          content: image,
+        },
+        features: [
+          {
+            type: 'LABEL_DETECTION',
+            maxResults: 1,
+          },
+        ],
+      },
+    ],
+  };
+  
+  try{
+    console.log('HERE1')
+    const response = await axios.post(API_URL, body)
+    console.log(response.status)
+  
+    return result.responses[0].labelAnnotations[0].description;
+  } catch(e) {
+    console.log('HERE!!')
+    console.log(e)
+  }
+}
 
-    if (startCamera) {
-      return (
-        <CameraComponent/>
-      )
-    } else {
-      return (
-        <Background>
-         <View style={styles.container}>
-           <TouchableOpacity onPress={startCameraFunc} style={styles.touchableOpacity}>
-             <AppText>Take picture</AppText>
-           </TouchableOpacity>
-         </View>
-         </Background>
-       )
-    } 
+export default function QrCode() {
+  
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
+    if (permissionResult.granted === false){
+      alert('Permission to access camera roll is required!');
+      return;
+    }
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      aspect: [4, 3],
+      quality: 1,
+      base64: true
+    });
+    
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+      console.log(await callGoogleVisionAsync(result.base64))
+  };
+}
+
+      
+    return <Background>
+      <View style={styles.title_container}>
+        <AppText style={styles.title}>Scan</AppText>
+      </View>
+     
+     <Button onPress={pickImage} title='Take image'/>
+
+    
+    </Background>
+    
 } ;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    display: "flex",
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: ScreenHeight,
-    backgroundColor: "red",
-    
+  title_container: {
+    paddingVertical: 100,
   },
-  touchableOpacity: {
-    width: 130,
-    borderRadius: 4,
-    backgroundColor: '#14274e',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 40,
+  title: {
+    fontFamily: 'bold', 
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 45,
   }
 })
 
-export default QrCode ;
 
 
