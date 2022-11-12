@@ -3,8 +3,8 @@ import Background from '../components/Background'
 
 export default function QrCode() {
   return (
-   <Background>
-    <AppText style={{fontFamily: 'italic'}}>Charbel Daoud Manyak</AppText>
+   <Background title='Scan'>
+    <AppText style={{fontFamily: 'italic'}}></AppText>
    </Background>
   )
 }
