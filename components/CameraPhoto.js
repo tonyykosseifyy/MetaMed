@@ -1,11 +1,15 @@
-import React from "react" ;
+import React, { useState , useEffect } from "react" ;
 import { View , ImageBackground , Text } from "react-native";
 import MlkitOcr from 'react-native-mlkit-ocr';
 
 const CameraPhoto = ({photo}) => {
     console.log('Photo: ', photo)
-    const resultFromUri = async () => MlkitOcr.detectFromUri(uri);
-    console.log(resultFromUri)
+    const [ result , setResult ] = useState();
+    useEffect(() => {
+        const resultFromUri = async () => await MlkitOcr.detectFromUri(uri);
+        setResult(resultFromUri())
+    },[])
+    console.log(result)
     return (
       <View
         style={{
