@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import LoadingPage from './Pages/LoadingPage';
+import QrCode from "./Pages/QrCode";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const [fontsLoaded] = useFonts({
+    'regular': require('./assets/fonts/Poppins-Regular.ttf'),
+    'bold': require('./assets/fonts/Poppins-Bold.ttf'),
+    'italic': require('./assets/fonts/Poppins-Italic.ttf'),
+    'medium': require('./assets/fonts/Poppins-Medium.ttf'),
+  });
+  if (!fontsLoaded){
+    return <LoadingPage/>
+  }
+  return <QrCode/>;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
