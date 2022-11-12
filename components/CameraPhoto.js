@@ -1,9 +1,11 @@
 import React from "react" ;
-import { View , ImageBackground } from "react-native";
+import { View , ImageBackground , Text } from "react-native";
+import MlkitOcr from 'react-native-mlkit-ocr';
 
-
-const CameraPreview = ({photo}) => {
+const CameraPhoto = ({photo}) => {
     console.log('Photo: ', photo)
+    const resultFromUri = async () => MlkitOcr.detectFromUri(uri);
+    console.log(resultFromUri)
     return (
       <View
         style={{
@@ -19,8 +21,11 @@ const CameraPreview = ({photo}) => {
             flex: 1
           }}
         />
+        <Text>
+            {resultFromUri}
+        </Text>
       </View>
     )
 };
 
-export default CameraPreview ;
+export default CameraPhoto ;

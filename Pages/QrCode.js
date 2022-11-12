@@ -9,7 +9,7 @@ let ScreenHeight = Dimensions.get("window").height;
 
 const QrCode = () => {
   const [startCamera,setStartCamera] = React.useState(false)
-  const __startCamera = async () => {
+  const startCameraFunc = async () => {
     const {status} = await Camera.requestCameraPermissionsAsync()
     if(status === 'granted'){
       setStartCamera(true) 
@@ -19,13 +19,13 @@ const QrCode = () => {
 
     if (startCamera) {
       return (
-        <CameraComponent />
+        <CameraComponent/>
       )
     } else {
       return (
         <Background>
          <View style={styles.container}>
-           <TouchableOpacity onPress={__startCamera} style={styles.touchableOpacity}>
+           <TouchableOpacity onPress={startCameraFunc} style={styles.touchableOpacity}>
              <AppText>Take picture</AppText>
            </TouchableOpacity>
          </View>
