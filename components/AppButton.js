@@ -9,7 +9,6 @@ export default function AppButton({children, style, onClick}) {
          <AppText style={styles.btn_text}>{children}</AppText>
         </View>
     </TouchableOpacity>
-
   )
 }
 
