@@ -15,15 +15,16 @@ import PurchaseModal from '../components/PurchaseModal';
 export default function Scan() {
     const [meds, setMeds] = useState([]);
     const [isPurchasing, setIsPurchasing] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     
     return <Background>
       <View style={styles.title_container}> 
         <AppText style={styles.title}>Scan</AppText>
       </View>
      
-      <PickImage setMeds={setMeds}/>
-      <Meds meds={meds} setIsPurchasing={setIsPurchasing}/>
-      <PurchaseModal isPurchasing={isPurchasing}/>
+      <PickImage setIsLoading={setIsLoading} setMeds={setMeds}/>
+      <Meds isLoading={isLoading} meds={meds} setIsPurchasing={setIsPurchasing}/>
+      <PurchaseModal isPurchasing={isPurchasing} setIsPurchasing={setIsPurchasing}/>
 
     </Background>
     

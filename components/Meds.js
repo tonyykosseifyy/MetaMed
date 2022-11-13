@@ -1,11 +1,11 @@
-import { View, StyleSheet, FlatList  } from 'react-native'
+import { View, StyleSheet, FlatList, ActivityIndicator  } from 'react-native'
 import AppButton from './AppButton'
 import AppText from './AppText'
 import Med from './Med'
 import {MEDS} from '../DATABASE'
 import PurchaseMeds from './PurchaseMeds'
 
-export default function Meds({meds, setIsPurchasing}) {
+export default function Meds({meds, setIsPurchasing, isLoading}) {
 
 
   return (
@@ -13,18 +13,22 @@ export default function Meds({meds, setIsPurchasing}) {
       <AppText style={styles.title}>Meds</AppText>
 
       
-      {meds.length === 0 ? 
-      <View style={styles.center_container}>
-        <AppText style={styles.center}>Please scan your prescription to see available meds</AppText>
-        </View> : 
-      <View>      
-     
-       <FlatList showsVerticalScrollIndicator={false} ListFooterComponent={<PurchaseMeds setIsPurchasing={setIsPurchasing} meds={meds}/>} data={meds} renderItem={(({item}) => MEDS[item] && <Med name={item} price={MEDS[item]}/>)}/>
-     
       
-      </View>
+     
+      { isLoading?  
+       <View style={styles.center_container}>
+        <ActivityIndicator color='blue' size='large'/> 
+        <AppText>Analyzing prescription...</AppText>
+        </View> 
+       :
+      meds.length === 0 ?  
+      <View style={styles.center_container}>
+        <AppText style={styles.center}>Please scan your prescription to see available meds</AppText> 
+      </View> :
+      <FlatList showsVerticalScrollIndicator={false} ListFooterComponent={<PurchaseMeds setIsPurchasing={setIsPurchasing} meds={meds}/>} data={meds} renderItem={(({item}) => MEDS[item] && <Med name={item} price={MEDS[item]}/>)}/>
+
       }
-   
+
     </View>
   )
 }

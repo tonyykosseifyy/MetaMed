@@ -1,5 +1,6 @@
 import { useFonts } from 'expo-font';
 import LoadingPage from './Pages/LoadingPage';
+import GeneratedQrCode from './Pages/GeneratedQrCode';
 import Scan from './Pages/Scan';
 
 export default function App() {
