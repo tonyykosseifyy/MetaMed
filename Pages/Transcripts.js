@@ -1,9 +1,9 @@
 import React, { useEffect , useState } from "react" ;
-import { View , TouchableOpacity , StyleSheet, Text} from "react-native";
+import { SafeAreaView ,View , TouchableOpacity , StyleSheet, Text , FlatList} from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import QrCodeComponent from "../components/QrCodeComponent";
 import QrModal from "../components/QrModal";
-import ModalComponent from "../components/QrModal";
+
 
 const storeTranscripts = async ( value ) => {
     try {
@@ -26,6 +26,15 @@ const getTranscripts = async () => {
 const Transcripts = () => {
     const [ transcripts , setTranscripts ] = useState([]);
     const [ openModal , setOpenModal ] = useState(false);
+    const [ modalTranscript , setModalTranscript ] = useState("");
+    const openTheModal = (transcript) => {
+        setOpenModal(true)
+        setModalTranscript(transcript)
+    }
+    const closeTheModal = () => {
+        setOpenModal(false);
+        setModalTranscript("");
+    }
     useEffect(() => {
         const result = getTranscripts()
         if (result._transcripts === undefined ) {
@@ -42,11 +51,11 @@ const Transcripts = () => {
         })()
     },[transcripts[-1]])
 
-    console.log(openModal)
+    console.log(openModal, modalTranscript);
     return (
         <View style={styles.container} >
             { transcripts.map((text, index) =>
-                <TouchableOpacity key={index} style={{...styles.component}} onPress={() => setOpenModal(true)}>
+                <TouchableOpacity key={index} style={{...styles.component}} onPress={() => openTheModal(text)}>
                     <View style={styles.itemLeft}>
                         <View style={styles.blueSquare}></View>
                         <Text>
@@ -58,7 +67,7 @@ const Transcripts = () => {
                     </View>         
                 </TouchableOpacity>
             )}
-            <QrModal open={openModal} closeModal={() => setOpenModal(false)} /> 
+            <QrModal open={openModal} modalText={modalTranscript} closeModal={() => closeTheModal()} /> 
         </View>
     )
 };

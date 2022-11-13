@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import { Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import QrCodeComponent from "./QrCodeComponent";
+import AppText from "./AppText";
 
 const ModalComponent = (props) => {
   const [modalVisible, setModalVisible] = useState(props.open);
@@ -13,20 +16,23 @@ const ModalComponent = (props) => {
   return (
     <View style={styles.centeredView}>
       <Modal
-        animationType="fade"
+        animationType="slide"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => close()}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
             <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => close()}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => close()}
+                >
+                <Icon name="close" size={50} color="#2196F3" />
             </Pressable>
+            <AppText style={styles.modalText}>{props.modalText}</AppText>
+            <View>
+                <QrCodeComponent content={props.modalText} size={300} />
+            </View>
           </View>
         </View>
       </Modal>
@@ -39,43 +45,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
-    width: "90%",
+    backgroundColor: "white",
   },
   modalView: {
     margin: 20,
     backgroundColor: "white",
-    borderRadius: 20,
     padding: 35,
-    alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
-      width: 0,
-      height: 2
+      width: 2,
+      height: 4
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.35,
     shadowRadius: 4,
-    elevation: 5
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
+    elevation: 5,
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+    position: "absolute",
+    top: 5 ,
+    right: 10,
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
+    textAlign: "left",
+    fontWeight: "bold",
+    fontSize: 17 
   }
 });
 
