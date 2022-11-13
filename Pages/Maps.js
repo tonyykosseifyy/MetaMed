@@ -71,8 +71,6 @@ const Maps = () => {
                     ))}
                     <Marker onPress={(e) => destination.latitude ? setDestination({}) : setDestination(e.nativeEvent.coordinate)} coordinate={{latitude :34.101935 , longitude: 35.719327 }} />
             </MapView>
-            <Text>Working</Text>
-            <AppButton onClick={() => console.log()}>Navigate to my location</AppButton>
         </View>
     );
 };
