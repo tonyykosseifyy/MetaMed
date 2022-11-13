@@ -17,10 +17,8 @@ export default function Scan() {
     const [isPurchasing, setIsPurchasing] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     
-    return <Background>
-      <View style={styles.title_container}> 
-        <AppText style={styles.title}>Scan</AppText>
-      </View>
+    return <Background title='Scan'>
+
      
       <PickImage setIsLoading={setIsLoading} setMeds={setMeds}/>
       <Meds isLoading={isLoading} meds={meds} setIsPurchasing={setIsPurchasing}/>

@@ -1,5 +1,6 @@
 
 
+import { useNavigation } from '@react-navigation/native';
 import {Modal, View, StyleSheet, Keyboard, Text, KeyboardAvoidingView, TouchableWithoutFeedback, useWindowDimensions, Dimensions} from 'react-native'
 import { CreditCardInput, LiteCreditCardInput } from "react-native-credit-card-input";
 import AppButton from './AppButton';
@@ -7,8 +8,13 @@ import AppButton from './AppButton';
 
 export default function PurchaseModal({isPurchasing, setIsPurchasing}) {
   
+  const navigation = useNavigation();
   const cancel = () => setIsPurchasing(false)
 
+  const purchase = () => {
+    setIsPurchasing(false);
+    navigation.navigate('QrCode');
+  }
 
 
   return (
@@ -23,7 +29,7 @@ export default function PurchaseModal({isPurchasing, setIsPurchasing}) {
             </KeyboardAvoidingView>
             <View style={styles.btn_group}>
               <AppButton onClick={cancel} style={styles.cancel_btn}>Cancel</AppButton>
-              <AppButton >Proceed</AppButton>
+              <AppButton onClick={purchase}>Proceed</AppButton>
             </View>
 
             

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     btn_purchase: {
     },
     purchase_grp: {
-        marginBottom: 75,
+
         flexDirection: 'row', 
         alignItems: 'center', 
         justifyContent: 'space-between', 

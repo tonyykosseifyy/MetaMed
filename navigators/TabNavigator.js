@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Maps from "../Pages/Maps";
-import QrCode from "../Pages/QrCode";
+import Scan from "../Pages/Scan";
 import Transcripts from "../Pages/Transcripts";
 import {AntDesign, FontAwesome, } from '@expo/vector-icons'
 
@@ -18,7 +18,7 @@ export default function TabNavigator() {
         tabBarIcon: ({ focused, color, size }) => {
           return <AntDesign name='scan1' size={size} color={color} />;
         },
-      }} name="Scan" component={QrCode}/>
+      }} name="Scan" component={Scan}/>
       <Tab.Screen  options={{
         tabBarIcon: ({ focused, color, size }) => {
           return <FontAwesome name='list-alt' size={size} color={color} />;

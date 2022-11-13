@@ -4,6 +4,7 @@ import { View , Text, StyleSheet , StatusBar} from "react-native" ;
 import AppButton from "../components/AppButton";
 import MapViewDirections from 'react-native-maps-directions';
 import * as Location from 'expo-location';
+import Background from "../components/Background";
 
 
 const GOOGLE_MAPS_APIKEY = 'AIzaSyDMOei5uHcZHiLsh-BYhdYYnkIsjr9PGsI';
@@ -34,27 +35,28 @@ const Maps = () => {
     const getLocation = async () => {
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status !== 'granted') {
-            console.log("not grsnted")
+            console.log("not granted")
             return;
         }
         let userLocation = await Location.getCurrentPositionAsync({});
-        console.log("user location",userLocation)
+       
         setLocation({
             latitude: userLocation.coords.latitude ,
             longitude: userLocation.coords.longitude
         });
     }
-    console.log("location", location, "destination", destination);
+   
     useEffect(() => {
         getLocation();
     }, []);
 
     return (
-        <View style={styles.mainView}>
+       <Background title='Map'>
+       
               <MapView
                 provider={PROVIDER_GOOGLE}
                 showsUserLocation={true}
-                style={{height: "80%" , width: "100%"}}
+                style={{height: "50%" , width: "100%"}}
                 followsUserLocation={true}
                 showsMyLocationButton={true}
                 showsTraffic={true}
@@ -71,15 +73,14 @@ const Maps = () => {
                     ))}
                     <Marker onPress={(e) => destination.latitude ? setDestination({}) : setDestination(e.nativeEvent.coordinate)} coordinate={{latitude :34.101935 , longitude: 35.719327 }} />
             </MapView>
-        </View>
+
+       </Background>
     );
 };
 
 
 const styles = StyleSheet.create({
-    mainView: {
-      paddingTop: StatusBar.currentHeight ,
-    },
+  
 });
 
 export default Maps ;

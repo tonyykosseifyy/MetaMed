@@ -25,7 +25,11 @@ export default function Meds({meds, setIsPurchasing, isLoading}) {
       <View style={styles.center_container}>
         <AppText style={styles.center}>Please scan your prescription to see available meds</AppText> 
       </View> :
-      <FlatList showsVerticalScrollIndicator={false} ListFooterComponent={<PurchaseMeds setIsPurchasing={setIsPurchasing} meds={meds}/>} data={meds} renderItem={(({item}) => MEDS[item] && <Med name={item} price={MEDS[item]}/>)}/>
+      <FlatList 
+      showsVerticalScrollIndicator={false} 
+      ListFooterComponent={<PurchaseMeds setIsPurchasing={setIsPurchasing} meds={meds}/>} 
+      data={meds} 
+      renderItem={(({item}) => MEDS[item] && <Med name={item} price={MEDS[item]}/>)}/>
 
       }
 
@@ -37,6 +41,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
+        paddingHorizontal: '5%',
     },
    
     title: {
@@ -52,12 +57,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    btn_purchase: {
-    },
-    purchase_grp: {
-    flexDirection: 'row', 
-    alignItems: 'center', 
-    justifyContent: 'space-between', 
-    marginTop: 8,
-    }
 })

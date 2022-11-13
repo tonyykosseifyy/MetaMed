@@ -3,6 +3,7 @@ import { useFonts } from 'expo-font';
 import LoadingPage from './Pages/LoadingPage';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './navigators/TabNavigator';
+import StackNavigator from './navigators/StackNavigator';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -15,7 +16,7 @@ export default function App() {
     return <LoadingPage/>
   }
   return <NavigationContainer>
-    <TabNavigator/>
+    <StackNavigator/>
   </NavigationContainer>;
 }
 

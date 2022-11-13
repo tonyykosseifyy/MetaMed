@@ -18,18 +18,17 @@ export default function Background({children, title}) {
 const styles = StyleSheet.create({
     container: {
       display:"flex",
-      paddingHorizontal: '5%',
+   
       flex: 1,
     }
     ,
     image: {
       display: 'flex',
-      paddingTop: Constants.statusBarHeight,
-      paddingTop: 120 ,
       flex: 1,
       width: '100%',
     },
     title: {
+        paddingVertical: 120 ,
         fontFamily: 'bold',
         fontSize: 45,
         textAlign: 'center',
