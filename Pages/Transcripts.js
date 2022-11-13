@@ -1,9 +1,9 @@
 import React, { useEffect , useState } from "react" ;
-import { SafeAreaView ,View , TouchableOpacity , StyleSheet, Text , FlatList} from "react-native";
+import { View , TouchableOpacity , StyleSheet, Text } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import QrCodeComponent from "../components/QrCodeComponent";
 import QrModal from "../components/QrModal";
-
+import Background from "../components/Background";
 
 const storeTranscripts = async ( value ) => {
     try {
@@ -39,7 +39,7 @@ const Transcripts = () => {
         const result = getTranscripts()
         if (result._transcripts === undefined ) {
             console.log("nulll")
-            const response = storeTranscripts(["John", "Peter", "Sally", "Jane"])
+            const response = storeTranscripts(["Panadol (200mg)", "Acetaminophen (syrup)", "Amitriptyline", "Votamere"])
         }
     },[])
 
@@ -53,7 +53,7 @@ const Transcripts = () => {
 
     console.log(openModal, modalTranscript);
     return (
-        <View style={styles.container} >
+        <Background style={styles.container} >
             { transcripts.map((text, index) =>
                 <TouchableOpacity key={index} style={{...styles.component}} onPress={() => openTheModal(text)}>
                     <View style={styles.itemLeft}>
@@ -68,18 +68,19 @@ const Transcripts = () => {
                 </TouchableOpacity>
             )}
             <QrModal open={openModal} modalText={modalTranscript} closeModal={() => closeTheModal()} /> 
-        </View>
+        </Background>
     )
 };
 
 const styles = StyleSheet.create({
     container: {
       display:"flex",
-      paddingVertical: 80,
       flexDirection: "column",
-      alignItems: "center"
+      alignItems: "center",
+      paddingVertical: 80,
     },
     component : {
+        backgroundColor: "white",
         width: "95%",
         display : "flex",   
         padding: 20,

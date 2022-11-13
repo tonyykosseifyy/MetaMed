@@ -3,11 +3,11 @@ import { StyleSheet,  View , ImageBackground} from 'react-native';
 
 import background from '../assets/back2.png'
 
-export default function Background({children}) {
+export default function Background(props) {
   return (
     <ImageBackground source={background} style={styles.image}>
-        <View style={styles.container}>
-            {children}
+        <View style={{...styles.container , ...props.style }}>
+            {props.children}
         </View>
     </ImageBackground>
   );
