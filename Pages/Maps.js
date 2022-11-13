@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from "react" ;
 import MapView, { PROVIDER_GOOGLE , Marker } from "react-native-maps" ;
-import { View , Text } from "react-native" ;
+import { View , Text, StyleSheet , StatusBar} from "react-native" ;
 import AppButton from "../components/AppButton";
 import MapViewDirections from 'react-native-maps-directions';
 
@@ -15,11 +15,11 @@ const Maps = () => {
     const [ location , setLocation ] = useState({}) ;
 
     return (
-        <View>
+        <View style={styles.mainView}>
               <MapView
                 provider={PROVIDER_GOOGLE}
                 showsUserLocation={true}
-                style={{height: "90%" , width: "100%"}}
+                style={{height: "80%" , width: "100%"}}
                 followsUserLocation={true}
                 showsMyLocationButton={true}
                 showsTraffic={true}
@@ -39,5 +39,11 @@ const Maps = () => {
     );
 };
 
+
+const styles = StyleSheet.create({
+    mainView: {
+      paddingTop: StatusBar.currentHeight ,
+    },
+});
 
 export default Maps ;
