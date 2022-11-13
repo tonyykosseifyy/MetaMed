@@ -1,12 +1,9 @@
 import React, { useEffect , useState } from "react" ;
 import { View , TouchableOpacity , StyleSheet, Text} from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-const value = {
-    name: "Chimezie",
-    job: "Software Developer"
-  };
+import QrCodeComponent from "../components/QrCodeComponent";
+import QrModal from "../components/QrModal";
+import ModalComponent from "../components/QrModal";
 
 const storeTranscripts = async ( value ) => {
     try {
@@ -27,7 +24,8 @@ const getTranscripts = async () => {
 };
 
 const Transcripts = () => {
-    const [ transcripts , setTranscripts ] = useState([])
+    const [ transcripts , setTranscripts ] = useState([]);
+    const [ openModal , setOpenModal ] = useState(false);
     useEffect(() => {
         const result = getTranscripts()
         if (result._transcripts === undefined ) {
@@ -44,35 +42,64 @@ const Transcripts = () => {
         })()
     },[transcripts[-1]])
 
-
+    console.log(openModal)
     return (
         <View style={styles.container} >
             { transcripts.map((text, index) =>
-                <TouchableOpacity key={index} style={styles.component}>
-                    <Text>
-                        {text}
-                    </Text>
+                <TouchableOpacity key={index} style={{...styles.component}} onPress={() => setOpenModal(true)}>
+                    <View style={styles.itemLeft}>
+                        <View style={styles.blueSquare}></View>
+                        <Text>
+                            {text}
+                        </Text>
+                    </View> 
+                    <View>
+                        <QrCodeComponent content={text} size={40} />
+                    </View>         
                 </TouchableOpacity>
             )}
+            <QrModal open={openModal} closeModal={() => setOpenModal(false)} /> 
         </View>
     )
 };
 
-
 const styles = StyleSheet.create({
     container: {
       display:"flex",
-      paddingVertical: 40,
+      paddingVertical: 80,
       flexDirection: "column",
-      alignItems: "stretch"
+      alignItems: "center"
     },
     component : {
-        padding: "100%",
+        width: "95%",
         display : "flex",   
-        borderBottomColor:'black',
-        borderTopColor:'black',
-        borderWidth: 1,
-        
+        padding: 20,
+        borderRadius: 20,
+        alignItems: "center",
+        justifyContent: "space-between",
+        flexDirection: "row",
+        marginTop: 20,
+        shadowColor: "#000",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.13,
+        shadowRadius: 2.62,
+        elevation: 2,
+    },
+    blueSquare : {
+        width: 24 ,
+        height: 24 , 
+        backgroundColor: "#29AFFB",
+        opacity: 0.4,
+        marginRight: 10,
+        borderRadius: 5
+    },
+    itemLeft: {
+        display: "flex",
+        flexDirection:"row"
     }
 });
 
