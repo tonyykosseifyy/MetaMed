@@ -60,9 +60,9 @@ const Maps = () => {
                 showsTraffic={true}
                 >
                     <MapViewDirections
-                        destination={destination}
+                        destination={destination.latitude && destination}
                         apikey={GOOGLE_MAPS_APIKEY}
-                        origin={ location }
+                        origin={ location.latitude && location }
                         strokeWidth={6}
                         strokeColor="red"
                     />
