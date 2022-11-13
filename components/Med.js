@@ -9,7 +9,7 @@ function capitalizeFirstLetter(string) {
 export default function Med({name, price}) {
   return (
     <View style={styles.med_container}>
-      <AppText>{capitalizeFirstLetter(name)}</AppText>
+      <AppText > {capitalizeFirstLetter(name)}</AppText>
       <AppText style={styles.price}>{price}$</AppText>
     </View>
   )
@@ -17,10 +17,11 @@ export default function Med({name, price}) {
 
 const styles = StyleSheet.create({
     med_container: {
-        marginVertical: 4,
+    
         width:'100%',
-        backgroundColor: '#00baf2',
-        padding: 8,
+     
+        paddingVertical: 8,
+       
         borderRadius: 8,
         display: 'flex',
         flexDirection: 'row',

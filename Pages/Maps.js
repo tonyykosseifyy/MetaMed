@@ -56,7 +56,7 @@ const Maps = () => {
               <MapView
                 provider={PROVIDER_GOOGLE}
                 showsUserLocation={true}
-                style={{height: "50%" , width: "100%"}}
+                style={styles.map}
                 followsUserLocation={true}
                 showsMyLocationButton={true}
                 showsTraffic={true}
@@ -80,7 +80,12 @@ const Maps = () => {
 
 
 const styles = StyleSheet.create({
-  
+  map:{
+    height: "100%" , 
+    width: "100%",
+    borderWidth: 3,
+    borderColor: '#00baf2'
+  }
 });
 
 export default Maps ;

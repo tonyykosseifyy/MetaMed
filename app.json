@@ -29,10 +29,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.selimellieh72.MetaMed",
-      "config": {
-        "googleMapsApiKey": "AIzaSyDMOei5uHcZHiLsh-BYhdYYnkIsjr9PGsI"
-      }
+      "package": "com.selimellieh72.MetaMed"
     },
     "web": {
       "favicon": "./assets/favicon.png"

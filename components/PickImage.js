@@ -31,6 +31,7 @@ export default function PickImage({setMeds, setIsLoading}) {
             console.log(result)
             setIsLoading(false)
             setMeds(result.split(/\r?\n/))
+
         };
     }
 
@@ -45,7 +46,7 @@ export default function PickImage({setMeds, setIsLoading}) {
 
 const styles = StyleSheet.create({
     btn_group: {
-   
+        marginBottom: 10,
      paddingVertical: 10,
      display: 'flex',
      flexDirection: 'row',

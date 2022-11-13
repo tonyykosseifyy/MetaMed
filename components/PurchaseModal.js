@@ -1,19 +1,34 @@
 
 
 import { useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import {Modal, View, StyleSheet, Keyboard, Text, KeyboardAvoidingView, TouchableWithoutFeedback, useWindowDimensions, Dimensions} from 'react-native'
 import { CreditCardInput, LiteCreditCardInput } from "react-native-credit-card-input";
+import { storeTranscript } from '../database/transcripts';
 import AppButton from './AppButton';
 
 
-export default function PurchaseModal({isPurchasing, setIsPurchasing}) {
+export default function PurchaseModal({meds, isPurchasing, setIsPurchasing, setMeds}) {
   
+  const [valid, setValid] = useState(false)
   const navigation = useNavigation();
-  const cancel = () => setIsPurchasing(false)
+  const cancel = () => {
+    setValid(false);
+     setIsPurchasing(false);
+  }
 
   const purchase = () => {
+    
+    const today = new Date();
+    const transcript = {date: today, meds }
+    storeTranscript(transcript)
+    setMeds([])
     setIsPurchasing(false);
-    navigation.navigate('QrCode');
+    navigation.navigate('QrCode', {title: today.toLocaleDateString(),meds});
+  }
+
+  const onChange = ({valid}) => {
+    setValid(valid)
   }
 
 
@@ -25,11 +40,11 @@ export default function PurchaseModal({isPurchasing, setIsPurchasing}) {
       
           <Text style={styles.title}>Complete Payement</Text>
             <KeyboardAvoidingView behavior='padding'>
-              <CreditCardInput cardFontFamily='regular'/>
+              <CreditCardInput onChange={onChange} cardFontFamily='regular'/>
             </KeyboardAvoidingView>
             <View style={styles.btn_group}>
               <AppButton onClick={cancel} style={styles.cancel_btn}>Cancel</AppButton>
-              <AppButton onClick={purchase}>Proceed</AppButton>
+              <AppButton disabled={!valid} onClick={purchase}>Proceed</AppButton>
             </View>
 
             

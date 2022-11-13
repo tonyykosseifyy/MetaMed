@@ -4,6 +4,7 @@ import AppText from './AppText'
 import Med from './Med'
 import {MEDS} from '../DATABASE'
 import PurchaseMeds from './PurchaseMeds'
+import AppActivityIndicator from './AppActivityIndicator'
 
 export default function Meds({meds, setIsPurchasing, isLoading}) {
 
@@ -17,7 +18,7 @@ export default function Meds({meds, setIsPurchasing, isLoading}) {
      
       { isLoading?  
        <View style={styles.center_container}>
-        <ActivityIndicator color='blue' size='large'/> 
+        <AppActivityIndicator/>
         <AppText>Analyzing prescription...</AppText>
         </View> 
        :
