@@ -1,7 +1,8 @@
 import { useFonts } from 'expo-font';
+
 import LoadingPage from './Pages/LoadingPage';
-import GeneratedQrCode from './Pages/GeneratedQrCode';
-import Scan from './Pages/Scan';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from './navigators/TabNavigator';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -13,6 +14,8 @@ export default function App() {
   if (!fontsLoaded){
     return <LoadingPage/>
   }
-  return <Maps/>;
+  return <NavigationContainer>
+    <TabNavigator/>
+  </NavigationContainer>;
 }
 

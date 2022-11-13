@@ -1,6 +1,4 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-
 export default function LoadingPage() {
   return (
     <View style={styles.container}>
