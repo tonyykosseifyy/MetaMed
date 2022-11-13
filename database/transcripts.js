@@ -13,8 +13,9 @@ export const storeTranscript = async ( transcript ) => {
 };
 export const getTranscripts = async () => {
     try {
-      const transcripts = await AsyncStorage.getItem("transcripts") || [];
-      const transcripts_list = JSON.parse(transcripts);
+      const transcripts = await AsyncStorage.getItem("transcripts") || '';
+   
+      const transcripts_list = transcripts ? JSON.parse(transcripts) : [];
       return transcripts_list;
     } catch (error) {
       console.log(error);

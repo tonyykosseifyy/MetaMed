@@ -30,7 +30,7 @@ export default function Meds({meds, setIsPurchasing, isLoading}) {
       showsVerticalScrollIndicator={false} 
       ListFooterComponent={<PurchaseMeds setIsPurchasing={setIsPurchasing} meds={meds}/>} 
       data={meds} 
-      renderItem={(({item}) => MEDS[item] && <Med name={item} price={MEDS[item]}/>)}/>
+      renderItem={(({item}) => <Med name={item} price={MEDS[item]}/>)}/>
 
       }
 

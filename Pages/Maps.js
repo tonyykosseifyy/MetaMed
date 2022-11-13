@@ -1,4 +1,5 @@
 import React, { useState , useEffect } from "react" ;
+import {MARKERS} from '../DATABASE';
 import MapView, { PROVIDER_GOOGLE , Marker } from "react-native-maps" ;
 import { View , Text, StyleSheet , StatusBar} from "react-native" ;
 import AppButton from "../components/AppButton";
@@ -14,20 +15,6 @@ const GOOGLE_MAPS_APIKEY = 'AIzaSyDMOei5uHcZHiLsh-BYhdYYnkIsjr9PGsI';
 
 // ,    , 
 
-const markers = [
-    {
-        latitude: 34.100934,
-        longitude: 35.728651 
-    },
-    {
-        latitude: 34.093649,
-        longitude: 35.717880 
-    },
-    {
-        latitude: 34.099654,
-        longitude: 35.713803
-    }
-];
 
 const Maps = () => {
     const [ location , setLocation ] = useState({}) ;
@@ -68,7 +55,7 @@ const Maps = () => {
                         strokeWidth={6}
                         strokeColor="red"
                     />
-                    { markers.map((marker ,index) => (
+                    { MARKERS.map((marker ,index) => (
                         <Marker key={index} onPress={(e) => destination.latitude ? setDestination({}) : setDestination(e.nativeEvent.coordinate)} coordinate={marker} />
                     ))}
                     <Marker onPress={(e) => destination.latitude ? setDestination({}) : setDestination(e.nativeEvent.coordinate)} coordinate={{latitude :34.101935 , longitude: 35.719327 }} />

@@ -20,7 +20,7 @@ export default function PickImage({setMeds, setIsLoading}) {
 
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             aspect: [4, 3],
-            quality: 0.1,
+            quality: 0,
             base64: true
         });
         
@@ -28,7 +28,6 @@ export default function PickImage({setMeds, setIsLoading}) {
             setIsLoading(true)
 
             result = await recognizeText(result.assets[0].base64)
-            console.log(result)
             setIsLoading(false)
             setMeds(result.split(/\r?\n/))
 

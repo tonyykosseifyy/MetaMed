@@ -10,7 +10,7 @@ export default function GeneratedQrCode() {
 
   return (
     <View style={styles.container}>
-        <AppText style={styles.text}>Thank you for using our app! Here is your generated Qr Code that you can claim at the nearest vending machine.</AppText>
+        <AppText style={styles.text}>Thank you for using MetaMed! Here is your generated Qr Code that you can claim at the nearest vending machine.</AppText>
         <View style={styles.qrCode_container}>
           <QRCode content={JSON.stringify(meds)}/>
         </View>
@@ -20,11 +20,11 @@ export default function GeneratedQrCode() {
 
 const styles = StyleSheet.create({
     container:{
-        flex: 1,
-        padding: 16,
+      flex: 1,
+      padding: 16,
       justifyContent: 'center',
       alignItems: 'center',
-        backgroundColor: 'white',
+      backgroundColor: 'white',
     },
     text:{
       textAlign: 'center'

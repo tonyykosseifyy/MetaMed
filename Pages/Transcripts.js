@@ -18,11 +18,7 @@ const Transcripts = () => {
         
         if (result ) {
             setTranscripts(result)
-            
-
-          } else {
-            setTranscripts([{meds: ["Panadol (200mg)"], date: new Date()},{meds: ["Panadol (200mg)"], date: new Date()}, {meds: ["Panadol (200mg)"], date: new Date()}, {meds: ["Panadol (200mg)"], date: new Date()}])
-          }
+          } 
     }
 
     useFocusEffect(() => {
@@ -32,7 +28,7 @@ const Transcripts = () => {
 
 
     return (
-        <Background title='Transcripts' style={!transcripts ? styles.container : {}}>
+        <Background title='Transcripts' style={!transcripts || transcripts.length === 0 ? styles.container : {}}>
             {transcripts === null? 
             <AppActivityIndicator/> : 
             transcripts.length == 0 ? <AppText>No transcripts added yet.</AppText>
