@@ -1,5 +1,5 @@
 import React, { useEffect , useState } from "react" ;
-import { View , StyleSheet, Text} from "react-native";
+import { View , TouchableOpacity , StyleSheet, Text} from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -48,9 +48,11 @@ const Transcripts = () => {
     return (
         <View style={styles.container} >
             { transcripts.map((text, index) =>
-                <Text key={index}>
-                    {text}
-                </Text>
+                <TouchableOpacity key={index} style={styles.component}>
+                    <Text>
+                        {text}
+                    </Text>
+                </TouchableOpacity>
             )}
         </View>
     )
@@ -58,12 +60,19 @@ const Transcripts = () => {
 
 
 const styles = StyleSheet.create({
-    container : {
-        display:"flex",
-        flexDirection: "column",
-        flex: 1,
-        backgroundColor: "white", 
-        paddingHorizontal: 10
+    container: {
+      display:"flex",
+      paddingVertical: 40,
+      flexDirection: "column",
+      alignItems: "stretch"
+    },
+    component : {
+        padding: "100%",
+        display : "flex",   
+        borderBottomColor:'black',
+        borderTopColor:'black',
+        borderWidth: 1,
+        
     }
 });
 
