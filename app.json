@@ -19,14 +19,20 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.selimellieh72.MetaMed"
+      "bundleIdentifier": "com.selimellieh72.MetaMed",
+      "config": {
+        "googleMapsApiKey": "AIzaSyDMOei5uHcZHiLsh-BYhdYYnkIsjr9PGsI"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.selimellieh72.MetaMed"
+      "package": "com.selimellieh72.MetaMed",
+      "config": {
+        "googleMapsApiKey": "AIzaSyDMOei5uHcZHiLsh-BYhdYYnkIsjr9PGsI"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

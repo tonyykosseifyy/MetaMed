@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import LoadingPage from './Pages/LoadingPage';
-import Scan from './Pages/Scan';
+import Maps from './Pages/Maps';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -12,6 +12,6 @@ export default function App() {
   if (!fontsLoaded){
     return <LoadingPage/>
   }
-  return <Scan/>;
+  return <Maps/>;
 }
 

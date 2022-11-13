@@ -1,0 +1,16 @@
+    const getLocation = async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+            console.log("not grsnted")
+            return;
+        }
+        let userLocation = await Location.getCurrentPositionAsync({});
+        console.log("user location",userLocation)
+        setLocation({
+            latitude: userLocation.coords.latitude ,
+            longitude: userLocation.coords.longitude
+        });
+    }
+    useEffect(() => {
+        getLocation();
+      }, []);
