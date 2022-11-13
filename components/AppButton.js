@@ -15,8 +15,12 @@ export default function AppButton({children, style, onClick}) {
 const styles = StyleSheet.create({
     btn: {
         padding: 8,
-        margin: 8,
-        backgroundColor: 'lightblue',
+        backgroundColor: '#00baf2',
+       
         borderRadius: 6,
     },
+    btn_text: {
+      fontFamily: 'medium',
+      color: 'white',
+    }
 })

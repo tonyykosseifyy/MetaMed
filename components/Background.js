@@ -16,10 +16,12 @@ export default function Background({children}) {
 const styles = StyleSheet.create({
     container: {
       display:"flex",
-      paddingHorizontal: 10,
+      paddingHorizontal: '5%',
+      flex: 1,
     }
     ,
     image: {
+      display: 'flex',
       paddingTop: Constants.statusBarHeight,
       flex: 1,
       width: '100%',

@@ -1,9 +1,11 @@
 import { View, StyleSheet, Button } from 'react-native'
 import {recognizeText} from '../Api/third_party'
 import * as ImagePicker from 'expo-image-picker';
+import {useState} from 'react';
 import AppButton from './AppButton';
 
-export default function PickImage() {
+export default function PickImage({setMeds}) {
+
 
     const pickImage = async (fromLibrary = false) => {
         let permissionResult = await ImagePicker.requestCameraPermissionsAsync();
@@ -22,8 +24,7 @@ export default function PickImage() {
         });
         
         if (!result.canceled) {
-            setImage(result.assets[0].uri);
-            console.log(await recognizeText(result.base64))
+            setMeds(['paracetemol', 'profinal','paracetemol', 'profinal','paracetemol', 'profinal','paracetemol', 'profinal','paracetemol', 'profinal'])
         };
     }
 
@@ -38,7 +39,8 @@ export default function PickImage() {
 
 const styles = StyleSheet.create({
     btn_group: {
-     paddingVertical: 30,
+   
+     paddingVertical: 10,
      display: 'flex',
      flexDirection: 'row',
      justifyContent: 'space-around',
