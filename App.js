@@ -13,6 +13,6 @@ export default function App() {
   if (!fontsLoaded){
     return <LoadingPage/>
   }
-  return <Scan/>;
+  return <Maps/>;
 }
 
