@@ -42,6 +42,12 @@ MetaMedApp is a mobile application that allows users to purchase and redeem medi
   - After the purchase is complete, a QR-code will be generated that can be redeemed at the nearest vending machine!
  
  
+* Transcription Screen<br/>
+
+  <img height="528px" src="https://github.com/selimellieh72/MetaMed/blob/main/preview/transcription.png"/>
+  
+  - On the transcription screen, you can access all your purchased medicines history
+  - You can also access all your previously generated QR-codes
  
 
 ## How To Use
