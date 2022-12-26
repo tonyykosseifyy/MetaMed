@@ -17,7 +17,7 @@
 </p>
 
 ## About
-MetaMedApp is a mobile application that allows users to purchase and redeem medicine through a convenient and easy-to-use platform. Using MetaMedApp, users can scan their prescription, select the desired medication, and pay for it using a credit card. Once the purchase is complete, a QR code is generated, which can be scanned at a vending machine to retrieve the medication. MetaMedApp was created by Selim Ellieh and Tony Kosseify as a part of a larger project for the WRO22 robotic competition's "Future Engineers" track. The goal of MetaMedApp is to provide a convenient and efficient way for users to access and purchase their necessary medications.
+MetaMedApp is a mobile application that allows users to purchase and redeem medicine through a convenient and easy-to-use platform. Using MetaMedApp, users can scan their prescription, select the desired medication, and pay for it using a credit card. Once the purchase is complete, a QR code is generated, which can be scanned at a vending machine to retrieve the medication. MetaMedApp was created by Selim Ellieh and Tony Kosseify as a part of a larger project for the "MetaMed" team participating in the WRO22 robotic competition's led by Charbel Daoud. The goal of MetaMedApp is to provide a convenient and efficient way for users to access and purchase their necessary medications.
 
 
 ## Key Features
