@@ -38,7 +38,7 @@ MetaMedApp is a mobile application that allows users to purchase and redeem medi
   <img height="528px" src="https://github.com/selimellieh72/MetaMed/blob/main/preview/qr.png"/>
   
   - On the scan screen, you can scan your prescription by taking an image of it or choosing an existing image
-  - The app will then recognize needed medicines, through making an api call to [Google's Cloud Vision (https://cloud.google.com/vision/docs/ocr) 
+  - The app will then recognize needed medicines, through making an api call to [Google's Cloud Vision] (https://cloud.google.com/vision/docs/ocr) 
   - The user can then purchase the medicines on the app through his credit card
   - After the purchase is complete, a QR-code will be generated that can be redeemed at the nearest vending machine!
  
