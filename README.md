@@ -89,8 +89,5 @@ expo start
 > GitHub [@NinjaCoder8](https://github.com/NinjaCoder8) &nbsp;&middot;&nbsp;
 > LinkedIn [Charbel Daoud](https://www.linkedin.com/in/charbeldaoud/)
 
-> GitHub [@tonyykosseifyy](https://github.com/tonyykosseifyy)
-
-> [selimellieh.me](https://www.selimellieh.me) &nbsp;&middot;&nbsp;
+> [tonyykosseifyy] (https://tonyykosseifyy.github.io/react-portfolio/) &nbsp;&middot;&nbsp;
 > GitHub [@selimellieh72](https://github.com/selimellieh72) &nbsp;&middot;&nbsp;
-> Twitter [@selim_ellieh](https://twitter.com/selim_ellieh)
