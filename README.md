@@ -59,7 +59,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com), [Reac
 
 ```bash
 # Clone this repository 
-$ git clone https://github.com/selimellieh72/MetaMedApp
+$ git clone https://github.com/tonyykosseifyy/MetaMedApp
 
 # Go into the repository
 $ cd MetaMedApp
